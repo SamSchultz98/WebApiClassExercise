@@ -13,6 +13,9 @@ namespace WebApiClassExercise.Controllers
     [ApiController]
     public class ExpensesController : ControllerBase
     {
+        public static string NEW = "NEW";
+
+
         private readonly AppDbContext _context;
 
         public ExpensesController(AppDbContext context)
@@ -40,7 +43,33 @@ namespace WebApiClassExercise.Controllers
 
             return expense;
         }
+        ////GET : api/Expenses/approved
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<IEnumerable<Expense>>> GetExpense(int id)
+        //{
+        //    return await _context.Expenses.Include(x => x.Employee) Where(XmlConfigurationExtensions => XmlConfigurationExtensions.Status == "APPROVED".ToList());
+        //}
 
+        // PUT: api/Employees/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PayExpense(int id)
+        {
+
+            List<Expense> expenses = await _context.Expenses.ToListAsync();
+            var _expense = from expens in expenses         //This finds the expense the user requested
+                           where expens.Id == id
+                           select expens;
+
+            Expense? emptar = _expense.FirstOrDefault();     //This pulls out the expense from the list
+
+            var exp = await _context.Expenses.FindAsync(id)
+
+            
+
+            
+
+        }
         // PUT: api/Expenses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
