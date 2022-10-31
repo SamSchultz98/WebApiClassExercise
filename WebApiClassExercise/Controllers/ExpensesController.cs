@@ -52,7 +52,7 @@ namespace WebApiClassExercise.Controllers
 
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+       /* [HttpPut("{id}")]
         public async Task<IActionResult> PayExpense(int id)
         {
 
@@ -63,13 +63,13 @@ namespace WebApiClassExercise.Controllers
 
             Expense? emptar = _expense.FirstOrDefault();     //This pulls out the expense from the list
 
-            var exp = await _context.Expenses.FindAsync(id)
+            var exp = await _context.Expenses.FindAsync(id);
 
             
 
             
 
-        }
+        }*/
         // PUT: api/Expenses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
